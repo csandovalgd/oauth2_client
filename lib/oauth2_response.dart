@@ -21,7 +21,7 @@ class OAuth2Response {
   }
 
   OAuth2Response.errorResponse({required String message}) {
-    respMap = {'http_status_code': 404, 'custom_message': message};
+    respMap = {'http_status_code': null, 'custom_message': message};
   }
 
   factory OAuth2Response.fromHttpResponse(http.Response response) {
