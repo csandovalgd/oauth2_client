@@ -122,7 +122,9 @@ class OAuth2Client {
         'http_status_code': 200
       });
     } on PlatformException {
-      return AccessTokenResponse.errorResponse(message: 'Platform exception');
+      return AccessTokenResponse.errorResponse(message: 'Implicit Grant Platform exception');
+    } catch (e) {
+      return AccessTokenResponse.errorResponse(message: e.toString());
     }
   }
 
@@ -183,7 +185,9 @@ class OAuth2Client {
         tknResp = AccessTokenResponse.errorResponse(message: 'Not granted');
       }
     } on PlatformException {
-      tknResp = AccessTokenResponse.errorResponse(message: 'Platform exception');
+      tknResp = AccessTokenResponse.errorResponse(message: 'Get Token Platform exception');
+    } catch (e) {
+      tknResp = AccessTokenResponse.errorResponse(message: e.toString());
     }
 
     return tknResp;
