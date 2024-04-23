@@ -9,7 +9,7 @@ import 'package:oauth2_client/oauth2_response.dart';
 class AccessTokenResponse extends OAuth2Response {
   AccessTokenResponse() : super();
 
-  AccessTokenResponse.errorResponse() : super.errorResponse();
+  AccessTokenResponse.errorResponse({required String message}) : super.errorResponse(message: message);
 
   AccessTokenResponse.fromMap(Map<String, dynamic> map) : super.fromMap(map);
 

@@ -20,8 +20,8 @@ class OAuth2Response {
     respMap = map;
   }
 
-  OAuth2Response.errorResponse() {
-    respMap = {'http_status_code': 404};
+  OAuth2Response.errorResponse({required String message}) {
+    respMap = {'http_status_code': 404, 'custom_message': message};
   }
 
   factory OAuth2Response.fromHttpResponse(http.Response response) {

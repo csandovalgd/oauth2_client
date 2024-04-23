@@ -51,7 +51,7 @@ void main() {
     });
 
     test('Error response', () async {
-      final resp = AccessTokenResponse.errorResponse();
+      final resp = AccessTokenResponse.errorResponse(message: 'error response');
       expect(resp.isValid(), false);
     });
 

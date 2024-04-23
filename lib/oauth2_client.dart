@@ -122,7 +122,7 @@ class OAuth2Client {
         'http_status_code': 200
       });
     } on PlatformException {
-      return AccessTokenResponse.errorResponse();
+      return AccessTokenResponse.errorResponse(message: 'Platform exception');
     }
   }
 
@@ -180,10 +180,10 @@ class OAuth2Client {
             customParams: accessTokenParams,
             customHeaders: accessTokenHeaders);
       } else {
-        tknResp = AccessTokenResponse.errorResponse();
+        tknResp = AccessTokenResponse.errorResponse(message: 'Not granted');
       }
     } on PlatformException {
-      tknResp = AccessTokenResponse.errorResponse();
+      tknResp = AccessTokenResponse.errorResponse(message: 'Platform exception');
     }
 
     return tknResp;
