@@ -121,8 +121,9 @@ class OAuth2Client {
         'expires_in': fragment['expires_in'],
         'http_status_code': 200
       });
-    } on PlatformException {
-      return AccessTokenResponse.errorResponse(message: 'Implicit Grant Platform exception');
+    } on PlatformException catch (error) {
+      return AccessTokenResponse.errorResponse(
+          message: error.message ?? 'Implicit Grant Platform exception');
     } catch (e) {
       return AccessTokenResponse.errorResponse(message: e.toString());
     }
@@ -184,8 +185,10 @@ class OAuth2Client {
       } else {
         tknResp = AccessTokenResponse.errorResponse(message: 'Not granted');
       }
-    } on PlatformException {
-      tknResp = AccessTokenResponse.errorResponse(message: 'Get Token Platform exception');
+    } on PlatformException catch (error) {
+      tknResp = AccessTokenResponse.errorResponse(
+          message: error.message ??
+              "Platform Exception in getTokenWithAuthCodeFlow");
     } catch (e) {
       tknResp = AccessTokenResponse.errorResponse(message: e.toString());
     }
